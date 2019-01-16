@@ -22,4 +22,10 @@ describe('Game', function() {
       expect(game.moves[0]).toEqual({1: 'x'})
     })
   });
+  describe("#turn", function() {
+    it("tracks the turns", function() {
+      game.move(1)
+      expect(game.turn).toEqual(2)
+    })
+  })
 });
