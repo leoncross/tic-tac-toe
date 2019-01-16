@@ -17,5 +17,9 @@ describe('Game', function() {
       spyOn(validate, "check").and.throwError("field already taken");
       expect(function() { game.move(1)}).toThrowError("field already taken")
     });
+    it("pushes move to array if no error", function() {
+      game.move(1)
+      expect(game.moves[0]).toEqual({1: 'x'})
+    })
   });
 });
