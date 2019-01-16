@@ -4,6 +4,6 @@ function Game (validate = new Validate()) {
 }
 
 Game.prototype.move = function (move) {
-  validate.check(this.moves)
+  validate.check(this.moves, move)
   return move
 }
