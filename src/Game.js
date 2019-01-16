@@ -15,5 +15,10 @@ Game.prototype.move = function (move) {
 }
 
 Game.prototype.changeTurns = function () {
+  if (this.player === 'x') {
+    this.player = 'o'
+  } else {
+    this.player = 'x'
+  }
   this.turn += 1
 }

@@ -27,5 +27,9 @@ describe('Game', function() {
       game.move(1)
       expect(game.turn).toEqual(2)
     })
+    it("changes the player piece", function() {
+      game.move(1)
+      expect(game.player).toEqual('o')
+    })
   })
 });
