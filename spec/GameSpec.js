@@ -26,8 +26,26 @@ describe('Game', function() {
   });
   describe("#_changeTurns", function() {
     it("changes the player piece", function() {
-      game.move(1)
+      game.move(1, 1)
       expect(game.player).toEqual(-1)
+    })
+  })
+  describe("#_checkWinner", function() {
+    it("win found)", function() {
+      game.move(1, 1)
+      game.move(2, 1)
+      game.move(1, 2)
+      game.move(2, 2)
+      game.move(1, 3)
+      expect(game.move(1, 3)).toEqual("winner")
+    })
+    it("no win", function() {
+      game.move(1, 1)
+      game.move(1, 2)
+      game.move(1, 3)
+      game.move(2, 1)
+      game.move(2, 2)
+      expect(game.move(2, 3)).toEqual({ row: 2, column: 3, score: -1 })
     })
   })
 });
