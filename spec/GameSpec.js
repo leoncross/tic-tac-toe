@@ -41,13 +41,19 @@ describe('Game', function() {
       game.move(2, 3)
       game.move(3, 1)
       game.move(3, 2)
-      expect(game.move(3, 3)).toEqual('draw')
+      expect(game.move(3, 3)).toEqual('Draw')
     })
   });
   describe("#_changeTurns", function() {
     it("changes the player piece", function() {
       game.move(1, 1)
       expect(game.player).toEqual(-1)
+    })
+  })
+  describe("_changePlayerDisplay", function() {
+    it("changes the players name for display purposes", function() {
+      game.move(1, 1)
+      expect(game.playerDisplay).toEqual('O')
     })
   })
   describe("#_gameSetup", function() {
@@ -60,6 +66,12 @@ describe('Game', function() {
       expect(game.player).toEqual(undefined)
       game.move(1, 1)
       expect(game.player).toEqual(-1)
+    })
+  })
+  describe("#newGame", function() {
+    it("creates a new game", function() {
+      game.newGame()
+      expect(game.moves.length).toEqual(0)
     })
   })
 })
