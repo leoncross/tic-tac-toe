@@ -10,7 +10,7 @@ describe('Feature', function() {
       game.move(1, 3)
       game.move(2, 2)
       game.move(1, 2)
-      expect(game.move(3, 3)).toEqual('X is the Winner!')
+      expect(game.move(3, 3)).toEqual('1 is the Winner!')
     })
     it("draw", function() {
       game.move(1, 1)

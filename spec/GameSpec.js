@@ -50,12 +50,6 @@ describe('Game', function() {
       expect(game.player).toEqual(-1)
     })
   })
-  describe("_changePlayerDisplay", function() {
-    it("changes the players name for display purposes", function() {
-      game.move(1, 1)
-      expect(game.playerDisplay).toEqual('O')
-    })
-  })
   describe("#_gameSetup", function() {
     it("initializes the moves array", function() {
       expect(game.moves).toEqual(undefined)
