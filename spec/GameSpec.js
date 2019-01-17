@@ -10,26 +10,24 @@ describe('Game', function() {
   });
   describe("#move", function() {
     it("accepts a move", function() {
-      expect(game.move(1)).toEqual(1)
+      game.move(1, 1)
+      expect(game.moves).toEqual([{row: 1, column: 1, score: 1}])
+    });
+    it("accepts multiple moves", function() {
+      game.move(1, 1)
+      game.move(1, 2)
+      expect(game.moves).toEqual([{row: 1, column: 1, score: 1}, {row: 1, column: 2, score: -1}])
     });
     it("error if field already taken", function() {
-      game.move(1)
+      game.move(1, 1)
       spyOn(validate, "check").and.throwError("field already taken");
-      expect(function() { game.move(1)}).toThrowError("field already taken")
+      expect(function() { game.move(1, 1) }).toThrowError("field already taken")
     });
-    it("pushes move to array if no error", function() {
-      game.move(1)
-      expect(game.moves[0]).toEqual({1: 'x'})
-    })
   });
-  describe("#turn", function() {
-    it("tracks the turns", function() {
-      game.move(1)
-      expect(game.turn).toEqual(2)
-    })
+  describe("#_changeTurns", function() {
     it("changes the player piece", function() {
       game.move(1)
-      expect(game.player).toEqual('o')
+      expect(game.player).toEqual(-1)
     })
   })
 });

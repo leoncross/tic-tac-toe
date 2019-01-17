@@ -1,24 +1,21 @@
 function Game (validate = new Validate()) {
   this.validate = validate
+  this.player = 1
   this.moves = []
-  this.turn = 1
-  this.player = 'x'
 }
 
-Game.prototype.move = function (move) {
+Game.prototype.move = function (row, column) {
+  move = { row: row, column: column, score: this.player }
   validate.check(this.moves, move)
-  currentMove = {}
-  currentMove[this.turn] = this.player
-  this.moves.push(currentMove)
-  this.changeTurns()
+  this.moves.push(move)
+  this._changeTurns()
   return move
 }
 
-Game.prototype.changeTurns = function () {
-  if (this.player === 'x') {
-    this.player = 'o'
+Game.prototype._changeTurns = function () {
+  if (this.player === 1) {
+    this.player = -1
   } else {
-    this.player = 'x'
+    this.player = 1
   }
-  this.turn += 1
 }

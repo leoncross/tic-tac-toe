@@ -5,10 +5,10 @@ describe('Validate', function() {
   });
   describe("#check", function() {
     it("returns false if no error", function() {
-      expect(validate.check([ { 1: 'o' } ], 5)).toEqual(false)
+      expect(validate.check([{row: 1, column: 1, score: 1}], {row: 1, column: 2, score: -1})).toEqual(false)
     });
     it("error if field already taken", function() {
-      expect(function() { validate.check([ { 1: 'o' } ], 1)}).toThrowError("Field already taken")
+      expect(function() { validate.check([{row: 1, column: 1, score: 1}], {row: 1, column: 1, score: -1})}).toThrowError("Field already taken")
     });
   });
 });
