@@ -32,6 +32,17 @@ describe('Game', function() {
       spyOn(validate, "check").and.throwError("field already taken");
       expect(function() { game.move(1, 1) }).toThrowError("field already taken")
     });
+    it("returns draw", function() {
+      game.move(1, 1)
+      game.move(1, 2)
+      game.move(1, 3)
+      game.move(2, 1)
+      game.move(2, 2)
+      game.move(2, 3)
+      game.move(3, 1)
+      game.move(3, 2)
+      expect(game.move(3, 3)).toEqual('draw')
+    })
   });
   describe("#_changeTurns", function() {
     it("changes the player piece", function() {

@@ -11,6 +11,7 @@ Game.prototype.move = function (row, column) {
   this.moves.push(move)
   if (this.gameRules.check(this.moves)) return `${this.player}` + ' winner'
   this._changeTurns()
+  if (this.moves.length === 9) return 'draw'
   return move
 }
 
