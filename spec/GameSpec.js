@@ -50,4 +50,16 @@ describe('Game', function() {
       expect(game.player).toEqual(-1)
     })
   })
+  describe("#_gameSetup", function() {
+    it("initializes the moves array", function() {
+      expect(game.moves).toEqual(undefined)
+      game.move(1, 1)
+      expect(game.moves.length).toEqual(1)
+    })
+    it("initializes the players", function() {
+      expect(game.player).toEqual(undefined)
+      game.move(1, 1)
+      expect(game.player).toEqual(-1)
+    })
+  })
 })

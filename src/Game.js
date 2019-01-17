@@ -1,11 +1,10 @@
 function Game (validate = new Validate(), gameRules = new GameRules()) {
   this.validate = validate
   this.gameRules = gameRules
-  this.player = 1
-  this.moves = []
 }
 
 Game.prototype.move = function (row, column) {
+  if (typeof this.moves === 'undefined') this._gameSetup()
   const move = { row: row, column: column, score: this.player }
   validate.check(this.moves, move)
   this.moves.push(move)
@@ -21,4 +20,9 @@ Game.prototype._changeTurns = function () {
   } else {
     this.player = 1
   }
+}
+
+Game.prototype._gameSetup = function () {
+  this.moves = []
+  this.player = 1
 }
