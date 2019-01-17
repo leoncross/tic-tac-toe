@@ -22,7 +22,7 @@ ______________
 
 ```
 
-Edge cases have been considered - if you try to provide a wrong move (i.e., game.move(5, 5)) an error is shown. This is the same for when trying to move to a field that already has player piece
+Error cases have been considered: if you try to provide a wrong move (i.e., game.move(5, 5)) an error is shown. This is the same for when trying to move to a field that already has player piece
 
 # How to run Tests / Linter:
 
@@ -35,6 +35,20 @@ npn test
 
 ```
 Note - a pass is blank, whereas an error is indicated by listing the errors.
+
+# To play the game in the console:
+
+Open up the index.html file in your web browser, and use the following commands to win:
+
+```
+game = new Game
+game.move(1, 1)
+game.move(1, 3)
+game.move(2, 2)
+game.move(1, 2)
+game.move(3, 3)
+
+```
 
 ## The brief
 
