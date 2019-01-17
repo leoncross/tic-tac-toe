@@ -44,6 +44,16 @@ describe('Game', function() {
       expect(game.move(3, 3)).toEqual('Draw')
     })
   });
+  describe("#newGame", function() {
+    it("creates a new game", function() {
+      game.newGame()
+      expect(game.moves.length).toEqual(0)
+    })
+    it("resets status", function() {
+      game.newGame()
+      expect(game.status).toEqual(0)
+    })
+  })
   describe("#_changeTurns", function() {
     it("changes the player piece", function() {
       game.move(1, 1)
@@ -60,12 +70,6 @@ describe('Game', function() {
       expect(game.player).toEqual(undefined)
       game.move(1, 1)
       expect(game.player).toEqual(-1)
-    })
-  })
-  describe("#newGame", function() {
-    it("creates a new game", function() {
-      game.newGame()
-      expect(game.moves.length).toEqual(0)
     })
   })
 })

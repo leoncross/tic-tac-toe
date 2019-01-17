@@ -2,15 +2,15 @@
 
 My approach:
 
-I created this following a strict TDD development cycle - I started by writing my first smallest test, saw that fail, then wrote the smallest possible code to see that pass. As features became bigger (i.e, my game rules), refactored them by extracting it out into its own class.
+I created this following a strict TDD development cycle, with focus on refactoring according to the Single Responsibility Principle - I started by writing my first smallest test, saw that fail, then wrote the smallest possible code to see that pass. As features became bigger (i.e, my game rules), refactored them by extracting it out into its own class. Please view my commits to evidence this.
 
-Within this code, as this is purely the business logic, I did not focus on any front end visuals. For example, my players are called '-1' and '1', because thats the easiest way to handle the data. This could easily be accessed on the front end and changed to 'O' and 'X' respectively.
+Within this code, as this is purely the business logic, I did not focus on any front end visuals. For example, my players are called '-1' and '1', because thats the easiest way to handle the data (I calculate a win if scores equal to either -3 or +3). This could easily be accessed on the front end and changed to 'O' and 'X' respectively.
 
-This code passes all tests, including features, as well as a Linter.
+This code passes all tests, including features, as well as uses a Linter.
 
-#How this code works:
+# How this code works:
 
-To move, you need to give it a row number, and a column number. For example of how each field is labeled, please see below:
+To play (move), you need to give it a row number, and a column number. For example of how each field is labeled, please see below:
 
 ```
 
@@ -22,7 +22,20 @@ ______________
 
 ```
 
-Error cases have been considered: if you try to provide a wrong move (i.e., game.move(5, 5)) an error is shown. This is the same for when trying to move to a field that already has player piece
+This therefore requires the user to engage with the business logic by communicating with it as such:
+
+- game.move(1, 1)
+- game.move(1, 2)
+
+All code that is not intended for the user is encapsulated - they cannot engage with moves, game status, or turn changer (etc.) without communicating with the application as intended.
+
+Finally, the following Error cases have been considered:
+1. on field taken - you cannot play the same position as an already taken piece
+2. on invalid player movies (i.e., game.move(5, 5) will result in error)
+3. on game completion - if the game is drawn or won, the game cannot continued to be played.
+
+These were deliberately refactored out of the Game.js file with the expectation of enabling scalability if intended.
+
 
 # How to run Tests / Linter:
 
@@ -34,7 +47,7 @@ To run the linter (eslint), open your terminal, navigate to the project path, an
 npn test
 
 ```
-Note - a pass is blank, whereas an error is indicated by listing the errors.
+Note - this returns a silent pass, whereas an error is indicated by listing the errors. To evidence this, comment out the 'import' lines (line 1 and 2) in the Game.js file and rerun the tests - this should now produce a fail.
 
 # To play the game in the console:
 

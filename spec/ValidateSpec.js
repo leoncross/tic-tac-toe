@@ -16,4 +16,9 @@ describe('Validate', function() {
       expect(function() { validate._playerMove({row: 4, column: 1, score: 1})}).toThrowError("Invalid Move")
     })
   })
+  describe("#_gameStatus", function() {
+    it("raises error after won game", function() {
+      expect(function() { validate._gameStatus('1 is the Winner!')}).toThrowError("Game already won")
+    })
+  })
 });
